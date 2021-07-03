@@ -69,7 +69,7 @@ class Player:
             print("SPARE")
         return self.list_of_frame[-1]
 
-    def check_special_special_throws(self):
+    def check_special_throws(self):
         if self.list_of_frame[-1][-1] == "X":
             special_throw2 = int(input("Second throw: "))
             special_throw3 = int(input("Third throw: "))
@@ -108,6 +108,6 @@ else:
     for i in range(1):
         for player in players:
             print(player.name)
-            player.check_special_special_throws()
+            player.check_special_throws()
             print(player.list_of_frame)
             print(player.score)
