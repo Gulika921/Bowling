@@ -17,9 +17,9 @@ class Player:
         for i in self.list_of_frame:
             list_of_values += i
         if sum(list_of_values) <= 300:
-            print("Your points are " + str(sum(list_of_values)))
+            return f"You have {sum(list_of_values)} points"
         else:
-            print("Maximum points are 300, you have more than 300 points, it can't be")
+            return "You have more than 300 points (maximum points are 300)"
 
     def first_pre_check(self, throw):
         if len(self.list_of_frame) > 1:
@@ -30,7 +30,7 @@ class Player:
 
     def second_pre_check(self, throw1, throw2):
         if self.list_of_frame[-1][-1] == "X":
-            self.list_of_frame[-1][-1] = 10 + throw1 + throw2
+            self.list_of_frame[-1][-1] = 10 +throw1 +throw2
 
     def check_first_throw(self, throw: int):
         """Return int type or string type"""
@@ -44,7 +44,7 @@ class Player:
         return throw
 
     def check_second_throw(self, throw1, throw2):
-        if throw2 >= (10-throw1):
+        if throw2 >= (10 - throw1):
             if self.list_of_frame:
                 self.second_pre_check(throw1, throw2)
             self.list_of_frame += [["/"]]
@@ -73,25 +73,23 @@ class Player:
         if self.list_of_frame[-1][-1] == "X":
             special_throw2 = int(input("Second throw: "))
             special_throw3 = int(input("Third throw: "))
-            self.list_of_frame[-1][-1] = 10+special_throw2+special_throw3
+            self.list_of_frame[-1][-1] = 10 + special_throw2 + special_throw3
             if self.list_of_frame[-2][-1] == "X":
-                self.list_of_frame[-2][-1] = 20+special_throw2
+                self.list_of_frame[-2][-1] = 20 + special_throw2
             elif self.list_of_frame[-2][-1] == "/":
                 self.list_of_frame[-2][-1] = 20
             if special_throw2 >= 10:
-                self.list_of_frame[-1][-1] = 20+special_throw3
+                self.list_of_frame[-1][-1] = 20 + special_throw3
             else:
                 if special_throw3 > 10 - special_throw2:
                     raise SystemExit("It can't be")
         if self.list_of_frame[-1][-1] == "/":
             special_throw3 = int(input("Third throw: "))
-            self.list_of_frame[-1][-1] = 10+special_throw3
-        if sum(self.list_of_frame[-1]) < 10:
-            self.list_of_frame[-1] = [sum(self.list_of_frame[-1])]
-        
-        
+            self.list_of_frame[-1][-1] = 10 + special_throw3
+
+
 count_of_player = int(input("How many player: "))
-players = [Player(input(f"Input name player {i+1}: ")) for i in range(count_of_player)]
+players = [Player(input(f"Input name player {i + 1}: ")) for i in range(count_of_player)]
 random.shuffle(players)
 print("Turn of players")
 for player in players:
@@ -111,3 +109,5 @@ else:
             player.check_special_throws()
             print(player.list_of_frame)
             print(player.score)
+
+
