@@ -30,7 +30,7 @@ class Player:
 
     def second_pre_check(self, throw1, throw2):
         if self.list_of_frame[-1][-1] == "X":
-            self.list_of_frame[-1][-1] = 10 +throw1 +throw2
+            self.list_of_frame[-1][-1] = 10+throw1+throw2
 
     def check_first_throw(self, throw: int):
         """Return int type or string type"""
@@ -109,5 +109,3 @@ else:
             player.check_special_throws()
             print(player.list_of_frame)
             print(player.score)
-
-
